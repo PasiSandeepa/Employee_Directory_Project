@@ -1,5 +1,6 @@
-package edu.icet.dto;
+package edu.icet.entity;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @ToString
-public class Employee {
+@Entity
+@Table(name="employee")
+public class EmployeeEntity {
+       @Id
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
        private Long id;
        private  String name;
        private String email;
@@ -19,7 +24,7 @@ public class Employee {
         private final LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
-    public Employee(LocalDateTime createdAt) {
+    public EmployeeEntity(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 }
